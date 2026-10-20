@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor Core — Client/Server</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="bar">
+    <h1>Editor Core <span class="tag">frontend</span></h1>
+    <p id="connStatus">Connecting to backend…</p>
+  </header>
+
+  <section class="left">
+    <div class="sheet" id="sheet" tabindex="0" role="textbox" aria-multiline="true" aria-label="Document"></div>
+
+    <div class="panel">
+      <div class="toolbar">
+        <button class="btn undo" id="btnUndo">Undo</button>
+        <button class="btn redo" id="btnRedo">Redo</button>
+        <span class="stepper">
+          <input type="number" id="nSteps" value="10" min="1" max="99" aria-label="Number of steps">
+          <button class="btn undo" id="btnUndoN">Undo steps</button>
+          <button class="btn redo" id="btnRedoN">Redo steps</button>
+        </span>
+        <span class="sep"></span>
+        <button class="btn demo" id="btnDemo">Run demo</button>
+        <button class="btn" id="btnClear">Clear all</button>
+      </div>
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Find and replace <span>linear search, via backend</span></h2>
+      <div class="find">
+        <input id="findIn" placeholder="Find" aria-label="Find text">
+        <input id="repIn" placeholder="Replace with" aria-label="Replace with">
+        <button class="btn" id="btnReplace">Replace all</button>
+        <button class="btn" id="btnFind">Find</button>
+      </div>
+      <div class="status" id="findStatus"></div>
+    </div>
+  </section>
+
+  <section class="right">
+    <div class="panel">
+      <h2>Doubly linked list <span id="listMeta"></span></h2>
+      <div class="chain" id="chain" aria-label="Linked list of characters"></div>
+    </div>
+
+    <div class="panel">
+      <div class="stacks">
+        <div class="stack-col u">
+          <h3>Undo stack <span id="uCount">0</span></h3>
+          <div class="plates" id="uPlates"></div>
+        </div>
+        <div class="stack-col r">
+          <h3>Redo stack <span id="rCount">0</span></h3>
+          <div class="plates" id="rPlates"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Word frequency <span>custom hash table, on backend</span></h2>
+      <div class="words">
+        <ul class="wlist" id="wlist"></ul>
+        <div>
+          <div class="stat-row" id="stats"></div>
+          <div class="sugg" id="sugg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
